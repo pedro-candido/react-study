@@ -14,29 +14,9 @@ const Form = () => {
 
     const [error, setError] = useState('')
 
-    let cepRegex = /^\d{5}-\d{3}$/;
-
-    const validateCep = (cep) =>{
-        if(cep.length === 0) {
-            setError('Preencha um valor')
-            return false
-        }
-        if(!(cepRegex.test(cep))) {
-            setError('Preencha um cep válido')
-            return false
-        }
-        setError('')
-        return true
-    }
-
     const handleBlur = (event) => {
         validateCep(event.target.value)
     };
-
-    const handleCepChange = (event) =>{
-        setCep(event.target.value)
-        if(cepRegex.test(event.target.value)) setError('')
-    }
 
     const handleSubmit = (event) =>{
         event.preventDefault()
